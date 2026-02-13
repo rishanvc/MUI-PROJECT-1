@@ -7,49 +7,47 @@ import ShareIcon from '@mui/icons-material/Share';
 import profilePic from "../assets/images/profile-pic.png";
 import jammukashmir from "../assets/images/jammu.jpg";
 
-const Posts = () => {
+const Post = ({ post }) => {
   return (
- 
-      <Card sx={{margin:5}}>
+    <Card sx={{ margin: 5 }}>
       <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: "red" }} aria-label="recipe"
-            src={profilePic}
-            >
-
-          </Avatar>
-        }
+        avatar={<Avatar src={post.profilePic} />}
         action={
-          <IconButton aria-label="settings">
+          <IconButton>
             <MoreVertIcon />
           </IconButton>
         }
-        title="Muhammed Rishan"
-        subheader="December 14, 2025"
+        title={post.name}
+        subheader={post.date}
       />
+
       <CardMedia
         component="img"
-        height="20%"
-        src={jammukashmir}
-        alt="Jammu & Kashmir"
+        height="250"
+        src={post.image}
       />
+
       <CardContent>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-         In December, Jammu and Kashmir experiences cold winter weather, with snowfall
-          and sub-zero temperatures in the Kashmir Valley and cool to chilly conditions in the Jammu region.
+        <Typography variant="body2" sx={{ color: "text.secondary" }}>
+          {post.caption}
         </Typography>
       </CardContent>
+
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-                <Checkbox icon={<FavoriteBorderIcon />} checkedIcon={<FavoriteIcon sx={{color:"red"}}/>} />
+        <IconButton>
+          <Checkbox
+            icon={<FavoriteBorderIcon />}
+            checkedIcon={<FavoriteIcon sx={{ color: "red" }} />}
+          />
         </IconButton>
-        <IconButton aria-label="share">
+
+        <IconButton>
           <ShareIcon />
         </IconButton>
       </CardActions>
     </Card>
-   
-  )
-}
+  );
+};
 
-export default Posts
+
+export default Post
